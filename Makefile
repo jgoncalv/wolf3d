@@ -3,43 +3,48 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nbuhler <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 11:54:09 by nbuhler           #+#    #+#              #
-#    Updated: 2017/10/05 11:54:10 by nbuhler          ###   ########.fr        #
+#    Updated: 2017/10/16 16:47:23 by jgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
-PATH_SRC = ./
-PATH_OBJ = ./
-PATH_INC = ./libft/includes/
-
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
 
-HEAD = wolf.h
+SRC_PATH = ./src/
+OBJ_PATH = ./obj/
+INC_PATH = ./include/ libft/include/
 
-SRC =	main.c 
+GCC_FLGS = -Werror -Wextra -Wall -g
 
-		
-OBJ = $(patsubst %.c,%.o,$(addprefix $(PATH_SRC), $(SRC)))
+SRC_NAME = main.c
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+LIB_NAME = libft
+
+SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
+LIB = $(addprefix -L,$(LIB_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEAD)
-	make -C libft/
-	$(CC) $(CFLAGS) -I $(PATH_INC) -c $(SRC)
-	$(CC) -o $(NAME) $(OBJ) -lm -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
+$(NAME): $(OBJ)
+	make -C $(LIB_PATH)libft -j
+	$(CC) $(GCC_FLGS) $(LIB) -lft $(INC) $(OBJ) -o $(NAME)
 
-.PHONY: clean fclean
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(GCC_FLGS) $(INC) -o $@ -c $<
 
 clean:
-	make -C libft/ clean
-	/bin/rm -f $(OBJ)
+	rm -fv $(OBJ)
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
-	make -C libft/ fclean
-	/bin/rm -f $(NAME)
+	make -C $(LIB_PATH)libft fclean
+	rm -fv $(NAME)
 
 re: fclean all
