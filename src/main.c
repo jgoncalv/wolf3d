@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:16 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/16 18:26:35 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/16 18:46:31 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ int	main(int ac, char **av)
 		return (0);
 	if (parser(map) == 0)
 		return (0);
-	for (int i = 0; map[i]; i++)
-	{
-		ft_putstr(map[i]);
-		ft_putchar('\n');
-	}
+	ft_tabdel(map);
 	return (0);
 }
