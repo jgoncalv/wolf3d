@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/16 16:45:26 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/16 18:19:53 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 # define WOLF_H
 
 # include "libft.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+
+
+int	parser(char **map);
+
 
 #endif

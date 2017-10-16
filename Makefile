@@ -6,7 +6,7 @@
 #    By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 11:54:09 by nbuhler           #+#    #+#              #
-#    Updated: 2017/10/16 16:47:23 by jgoncalv         ###   ########.fr        #
+#    Updated: 2017/10/16 18:19:24 by jgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC_PATH = ./include/ libft/include/
 
 GCC_FLGS = -Werror -Wextra -Wall -g
 
-SRC_NAME = main.c
+SRC_NAME = main.c parser.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft
