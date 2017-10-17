@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 16:44:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/17 16:54:00 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/17 18:36:10 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void ft_init_player(t_env *e, char **map)
 	}
 	e->player.posX = x;
 	e->player.posY = y;
-	e->player.dirX = -1;
+	e->player.dirX = 1;
 	e->player.dirY = 0;
 	e->player.planeX = 0;
 	e->player.planeY = 0.66;

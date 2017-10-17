@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/17 16:53:04 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/17 19:16:28 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
 # include </System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/X11/X.h>
 
 # define WIN_H 600
 # define WIN_W 600
 # define PROG_NAME "Wolf3D"
+
+# define UP_ARROW 126
+# define DOWN_ARROW 125
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
 
 typedef struct	s_player
 {
@@ -32,7 +38,6 @@ typedef struct	s_player
 	double dirY;
 	double planeX;
 	double planeY;
-
 }				t_player;
 
 typedef struct 	s_ray
@@ -88,6 +93,7 @@ typedef struct	s_env
 int	parser(char **map);
 void	error_message();
 t_env init(char **map);
-
+void raycasting(t_env *e);
+int			keyhook(int keycode, t_env *e);
 
 #endif
