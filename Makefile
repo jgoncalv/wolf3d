@@ -6,7 +6,7 @@
 #    By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 11:54:09 by nbuhler           #+#    #+#              #
-#    Updated: 2017/10/16 18:19:24 by jgoncalv         ###   ########.fr        #
+#    Updated: 2017/10/17 16:53:18 by jgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ OBJ_PATH = ./obj/
 INC_PATH = ./include/ libft/include/
 
 GCC_FLGS = -Werror -Wextra -Wall -g
+MLX = -L mlx -lmlx -framework OpenGL -framework AppKit
 
-SRC_NAME = main.c parser.c
+SRC_NAME = main.c parser.c error_message.c init.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft
@@ -33,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C $(LIB_PATH)libft -j
-	$(CC) $(GCC_FLGS) $(LIB) -lft $(INC) $(OBJ) -o $(NAME)
+	$(CC) $(GCC_FLGS) $(MLX) $(LIB) -lft $(INC) $(OBJ) -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	mkdir -p $(OBJ_PATH)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbuhler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 19:23:21 by nbuhler           #+#    #+#             */
-/*   Updated: 2017/10/16 19:23:23 by nbuhler          ###   ########.fr       */
+/*   Updated: 2017/10/17 16:44:41 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,71 +37,6 @@ void draw_line(t_env *e, int x)
 
 }
 
-void ft_init_player(t_env *e)
-{
-	e->player.posX = 1;
-	e->player.posY = 1;
-	e->player.dirX = -1;
-	e->player.dirY = 0;
-	e->player.planeX = 0;
-	e->player.planeY = 0.66;
-}
-
-void ft_init_ray(t_env *e)
-{
-	e->ray.ray_posX = 0;
-	e->ray.ray_posY = 0;
-	e->ray.cameraX = 0;
-	e->ray.ray_dirX = 0;
-	e->ray.ray_dirY = 0;
-	e->ray.side_distX = 0;
-	e->ray.side_distY = 0;
-	e->ray.delta_distX = 0;
-	e->ray.delta_distY = 0;
-	e->ray.perp_wallDist = 0;
-	e->ray.stepX = 0;
-	e->ray.stepY = 0;
-	e->ray.hit = 0;
-	e->ray.side = 0;
-	e->ray.lineHeight = 0;
-	e->ray.drawStart = 0;
-	e->ray.drawEnd = 0;
-
-}
-
-int  **ft_init_map(t_env *e)//, int fd, char *map)
-{
-	int tt[3][3] = {
-		{1,1,1},
-		{1,0,1},
-		{1,1,1},
-	 };
-	e->map.mapX = 0;
-	e->map.mapY = 0;
-	e->map.map = tt;
-	return tt;
-}
-
-
-t_env ft_init_env(t_env *e)
-{
-	ft_bzero(e, sizeof(t_env));
-	e->width = 800;
-	e->height = 600;
-	e->mlx = mlx_init();
-	e->win = mlx_new_window(e->mlx, e->width, e->height, "Wolf3D");
-	e->img = mlx_new_image(e->mlx, e->width, e->height);
-	e->pxl = mlx_get_data_addr(e->img, &(e->bpp), &(e->s_line), &(e->ed));
-	e->colorsky = 0x00cdff;
-	e->color = 0xff9600;
-	e->color2 = 0x73ff00;
-	ft_init_player(e);
-	ft_init_ray(e);
-	ft_init_map(e);
-	return *e;
-}
-
-
 int main(int argc, char **argv)
 {
 	t_env e;
@@ -114,8 +49,8 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	else
-	{	
-		x = 0;	
+	{
+		x = 0;
 		str = argv[0];
 		e = ft_init_env(&e);
 		map = ft_init_map(&e);
@@ -141,7 +76,7 @@ int main(int argc, char **argv)
 				else
 				{
 					e.ray.stepX = 1;
-					e.ray.side_distX = (e.map.mapX + 1.0 - e.ray.ray_posX) * e.ray.delta_distX;	
+					e.ray.side_distX = (e.map.mapX + 1.0 - e.ray.ray_posX) * e.ray.delta_distX;
 				}
 				if(e.ray.ray_dirY < 0)
 				{
@@ -151,7 +86,7 @@ int main(int argc, char **argv)
 				else
 				{
 					e.ray.stepY = 1;
-					e.ray.side_distX = (e.map.mapY + 1.0 - e.ray.ray_posY) * e.ray.delta_distY;	
+					e.ray.side_distX = (e.map.mapY + 1.0 - e.ray.ray_posY) * e.ray.delta_distY;
 				}
 				while(e.ray.hit == 1)
 				{
@@ -165,7 +100,7 @@ int main(int argc, char **argv)
 					{
 						e.ray.side_distY += e.ray.delta_distY;
 						e.map.mapX += e.ray.stepX;
-						e.ray.side = 1;	
+						e.ray.side = 1;
 					}
 					if(e.map.map[e.map.mapX][e.map.mapY] > 0)
 						e.ray.hit = 1;
@@ -182,10 +117,10 @@ int main(int argc, char **argv)
 				if(e.ray.drawEnd >= e.height)
 					e.ray.drawEnd = e.height - 1;
 				draw_line(&e, x);
-			}	
+			}
 		}
 		mlx_loop(e.mlx);
-	}	
+	}
 
 	return 0;
 }

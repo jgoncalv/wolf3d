@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:16 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/16 18:46:31 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/17 16:54:21 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static char **open_map(const char *file)
 int	main(int ac, char **av)
 {
 	char **map;
+
 	if (ac != 2)
 		return (0);
 	map = open_map(av[1]);
-	if (map == NULL)
+	if (map == NULL || parser(map) == 0)
 		return (0);
-	if (parser(map) == 0)
-		return (0);
-	ft_tabdel(map);
+	init(map);
+	ft_tabdel(map, ft_tablen(map));
 	return (0);
 }
