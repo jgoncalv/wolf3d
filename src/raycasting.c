@@ -31,12 +31,12 @@ static void cal_side_dist(t_ray *ray)
 	}
 	else
 	{
-	    stepY = 1;
+	    ray->stepy = 1;
 	    ray->sidedy = (ray->mapy + 1.0 - ray->posy) * ray->ddisty;
 	}
 }
 
-static void hit_wall(t_ray *ray)
+static void hit_wall(t_env *e, t_ray *ray)
 {
 	while (1)
       {
@@ -48,11 +48,11 @@ static void hit_wall(t_ray *ray)
         }
         else
         {
-          ray->sidedy += deltaDistY;
+          ray->sidedy += ray->ddisty;
           ray->mapy += ray->stepy;
           ray->side = 1;
         }
-        if (ray->map[ray->mapx][ray->mapy] > 0)
+        if (e->map[ray->mapx][ray->mapy] > 0)
         	break ;
       }
 }
@@ -97,7 +97,7 @@ void draw_line(t_env *e, t_ray *ray, int x)
 		put_pxl(e,x,i,e->colorsky);
 	i--;
 	while(++i <= ray->draw_end && i < WIN_H)
-		put_pxl(e,x,i,e->color);
+		put_pxl(e,x,i,e->color1);
 	i--;
 	while(++i < WIN_H)
 		put_pxl(e,x,i,e->color2);
@@ -108,9 +108,8 @@ void	raycasting(t_env *e)
 	int		x;
 	t_ray	ray;
 	
-	ray.posx = e->player.posx;
+	ray.posx = e->player_posx;
 	ray.posy = e->player_posy;
-	ray.map = e->map;
 	x = -1;
 	while(++x < WIN_W)
 	{
@@ -122,7 +121,7 @@ void	raycasting(t_env *e)
 		ray.ddistx = sqrt(1 + pow(ray.diry,2) / pow(ray.dirx, 2));
 		ray.ddisty = sqrt(1 + pow(ray.dirx,2) / pow(ray.diry, 2));
 		cal_side_dist(&ray);
-		hit_wall(&ray);
+		hit_wall(e, &ray);
 		cal_dist_ray_to_perpwall(&ray);
 		cal_draw_start_end(&ray);
 		draw_line(e,&ray,x);

@@ -53,10 +53,48 @@ typedef struct	s_env
 	int			mapx;
 	int			mapy;
 	int			map[SQUARE_MAP_SIZE][SQUARE_MAP_SIZE];
+
+	int			colorsky;
+	int 		color1;
+	int 		color2;
+	int 		color3;
+	int 		color4;	
 }				t_env;
+
+typedef struct s_ray
+{
+	double	posx;
+	double	posy;
+	
+	double	dirx;
+	double	diry;
+	
+	double	sidedx;
+	double	sidedy;
+	
+	double	ddistx;
+	double	ddisty;
+	
+	double	walldist;
+
+	int		side;
+
+	int		stepx;
+	int		stepy;
+
+	double	camerax;
+
+	int		mapx;
+	int		mapy;
+	double 	draw_start;
+	double 	draw_end;
+
+}				t_ray;		
 
 int		parser(char **map);
 void	error_message();
 t_env	init(char **map);
+void	raycasting(t_env *e);
+int			keyhook(int keycode, t_env *e);
 
 #endif

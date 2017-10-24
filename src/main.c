@@ -35,13 +35,13 @@ static char **open_map(const char *file)
 	close(fd);
 	return (map);
 }
-// 
-// int loop_hook(t_env *e)
-// {
-//     raycasting(e);
-//     mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-// 	return 1;
-// }
+
+int loop_hook(t_env *e)
+{
+    raycasting(e);
+    mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
+	return 1;
+}
 
 int	main(int ac, char **av)
 {
@@ -58,8 +58,8 @@ int	main(int ac, char **av)
 	}
 	e = init(map);
 	ft_tabdel(map, ft_tablen(map));
-	// mlx_loop_hook(e.mlx, loop_hook, &e);
-	// mlx_key_hook(e.win, keyhook, &e);
-	// mlx_loop(e.mlx);
+	mlx_loop_hook(e.mlx, loop_hook, &e);
+	mlx_key_hook(e.win, keyhook, &e);
+	mlx_loop(e.mlx);
 	return (0);
 }

@@ -71,6 +71,9 @@ t_env init(char **map)
 	e.win = mlx_new_window(e.mlx, e.width, e.height, "Wolf3D");
 	e.img = mlx_new_image(e.mlx, e.width, e.height);
 	e.pxl = mlx_get_data_addr(e.img, &(e.bpp), &(e.s_line), &(e.ed));
+	e.colorsky = 0x5BB8FE;
+	e.color1 = 0xA44080;
+	e.color2 = 0x5BA440;
 	ft_init_player(&e, map);
 	ft_init_map(&e, map);
 	return (e);
