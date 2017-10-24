@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 15:17:30 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/16 18:38:23 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/21 14:38:54 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,6 @@ char				*ft_uitoa_base(uintmax_t n, int base, int upper);
 /*
 ** MATH
 */
-int					ft_res_zero(int	res);
+int					ft_res_zero(int res);
 
 #endif
