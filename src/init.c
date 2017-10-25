@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 16:44:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/25 18:08:44 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/25 20:22:32 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,11 @@ t_env init(char **map)
 	e.img = mlx_new_image(e.mlx, e.width, e.height);
 	e.pxl = mlx_get_data_addr(e.img, &(e.bpp), &(e.s_line), &(e.ed));
 	e.colorsky = 0x5BB8FE;
-	e.color1 = 0xA44080;
-	e.color2 = 0x5BA440;
+	e.colorground = 0x00FFFF;
+	e.color_east = 0xFF0000;
+	e.color_west = 0x00FF00;
+	e.color_north = 0x0000FF;
+	e.color_south = 0xFF00FF;
 	ft_init_player(&e, map);
 	ft_init_map(&e, map);
 	return (e);

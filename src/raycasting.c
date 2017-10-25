@@ -6,7 +6,7 @@
 /*   By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 18:36:50 by nbuhler           #+#    #+#             */
-/*   Updated: 2017/10/25 18:17:30 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/25 20:51:36 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,19 +91,53 @@ void    put_pxl(t_env *e, int x, int y, unsigned int c)
 	e->pxl[++i] = c >> 16;
 }
 
+int get_color(t_env *e, t_ray *ray)
+{
+	if (ray->side == 1)
+	{
+		if ((ray->stepx == -1 && ray->stepy == -1) || (ray->stepx == 1 && ray->stepy == -1))
+			return (e->color_east);
+		if ((ray->stepx == -1 && ray->stepy == 1) || (ray->stepx == 1 && ray->stepy == 1))
+			return (e->color_west);
+	}
+	if ((ray->stepx == -1 && ray->stepy == -1) || (ray->stepx == -1 && ray->stepy == 1))
+		return (e->color_north);
+	return (e->color_south);
+
+}
+
+int smog_wall(t_ray *ray, int color)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = color / 256 / 256;
+	g = color / 256 % 256;
+	b = color % 256;
+		if (r > 0)
+			r = r - ((r * ray->walldist) / 8);
+		if (g > 0)
+			g = g - ((g * ray->walldist) / 8);
+		if (b > 0)
+			b = b - ((b * ray->walldist) / 8);
+		color = (r * 256 * 256) + (g * 256) + b;
+	return (color);
+}
+
 void draw_line(t_env *e, t_ray *ray, int x)
 {
 	int i;
 
 	i = -1;
 	while(++i < ray->draw_start)
-		put_pxl(e,x,i,e->colorsky);
+		put_pxl(e, x, i, e->colorsky);
 	i--;
 	while(++i <= ray->draw_end && i < WIN_H)
-		put_pxl(e,x,i,e->color1);
+		put_pxl(e, x, i, smog_wall(ray, get_color(e, ray)));
 	i--;
 	while(++i < WIN_H)
-		put_pxl(e,x,i,e->color2);
+		put_pxl(e, x, i, e->colorground);
 }
 
 
@@ -161,8 +195,6 @@ void draw_player_dir(t_env *e)
 	double rayx = e->player_posx + (e->player_dirx * 1.5);
 	double rayy = e->player_posy + (e->player_diry * 1.5);
 
-	//printf("diry= %f, dirx= %f rayy= %f rayx %f\n", e->player_diry, e->player_dirx, rayy, rayx);
-
 	draw_ray(e, rayx, rayy, 0x00ff00);
 }
 
@@ -184,7 +216,6 @@ void	raycasting(t_env *e)
 		ray.mapy = (int)ray.posy;
 		ray.ddistx = sqrt(1 + pow(ray.diry,2) / pow(ray.dirx, 2));
 		ray.ddisty = sqrt(1 + pow(ray.dirx,2) / pow(ray.diry, 2));
-		//printf("%f %f %f %f\n", pow(ray.diry,2), pow(ray.dirx,2), ray.ddistx, ray.ddisty);
 		cal_side_dist(&ray);
 		hit_wall(e, &ray);
 		cal_dist_ray_to_perpwall(&ray);

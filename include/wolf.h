@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/25 15:43:07 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/25 20:23:19 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define PROG_NAME "Wolf3D"
 # define SQUARE_MAP_SIZE 10
 # define MINI_MAPW 160
-# define MINI_MAPH 120  
+# define MINI_MAPH 120
 
 # define UP_ARROW 126
 # define DOWN_ARROW 125
@@ -57,10 +57,11 @@ typedef struct	s_env
 	int			map[SQUARE_MAP_SIZE][SQUARE_MAP_SIZE];
 
 	int			colorsky;
-	int 		color1;
-	int 		color2;
-	int 		color3;
-	int 		color4;
+	int			colorground;
+	int 		color_east;
+	int 		color_west;
+	int 		color_north;
+	int 		color_south;
 }				t_env;
 
 typedef struct s_ray
