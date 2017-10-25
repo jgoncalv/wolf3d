@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 16:44:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/24 16:41:16 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/25 18:08:44 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ static void ft_init_player(t_env *e, char **map)
 			break ;
 		y++;
 	}
-	e->player_posx = x;
-	e->player_posy = y;
+	e->player_posx = x + 0.5;
+	e->player_posy = y + 0.5;
+
 	e->player_dirx = 0;
-	e->player_diry = -1;
-	e->planex = 0;
-	e->planey = 0.66;
+	e->player_diry = 1;
+	e->planex = 0.66;
+	e->planey = 0;
 }
 
 static void ft_init_map(t_env *e, char **map)

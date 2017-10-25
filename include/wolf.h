@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/24 16:41:58 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/25 15:43:07 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
 # include <math.h>
 # include </System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/X11/X.h>
 
-# define WIN_H 600
 # define WIN_W 800
+# define WIN_H 600
 # define PROG_NAME "Wolf3D"
 # define SQUARE_MAP_SIZE 10
+# define MINI_MAPW 160
+# define MINI_MAPH 120  
 
 # define UP_ARROW 126
 # define DOWN_ARROW 125
@@ -58,23 +60,23 @@ typedef struct	s_env
 	int 		color1;
 	int 		color2;
 	int 		color3;
-	int 		color4;	
+	int 		color4;
 }				t_env;
 
 typedef struct s_ray
 {
 	double	posx;
 	double	posy;
-	
+
 	double	dirx;
 	double	diry;
-	
+
 	double	sidedx;
 	double	sidedy;
-	
+
 	double	ddistx;
 	double	ddisty;
-	
+
 	double	walldist;
 
 	int		side;
@@ -89,12 +91,34 @@ typedef struct s_ray
 	double 	draw_start;
 	double 	draw_end;
 
-}				t_ray;		
+}				t_ray;
+
+
+typedef struct		s_draw
+{
+	int				color;
+	int				zi;
+	int				zf;
+	int				xi;
+	int				yi;
+	int				xf;
+	int				yf;
+	int				dx;
+	int				dy;
+	int				xinc;
+	int				yinc;
+	int				decalx;
+	int				decaly;
+	int				offsetx;
+	int				offsety;
+}					t_draw;
 
 int		parser(char **map);
 void	error_message();
 t_env	init(char **map);
 void	raycasting(t_env *e);
 int			keyhook(int keycode, t_env *e);
+void	fill_pixel(char **img, int x, int y, int color);
+void		draw_ray(t_env *e, double xf, double yf, int color);
 
 #endif
