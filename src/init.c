@@ -38,6 +38,10 @@ static void ft_init_player(t_env *e, char **map)
 	e->player_diry = 1;
 	e->planex = 0.66;
 	e->planey = 0;
+	e->player_move_up = 0;
+	e->player_move_down = 0;
+	e->player_move_right = 0;
+	e->player_move_left = 0;
 }
 
 static void ft_init_map(t_env *e, char **map)

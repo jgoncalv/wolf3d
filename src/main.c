@@ -36,13 +36,6 @@ static char **open_map(const char *file)
 	return (map);
 }
 
-int loop_hook(t_env *e)
-{
-    raycasting(e);
-    mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-	return 1;
-}
-
 int	main(int ac, char **av)
 {
 	char **map;
@@ -58,8 +51,10 @@ int	main(int ac, char **av)
 	}
 	e = init(map);
 	ft_tabdel(map, ft_tablen(map));
+	mlx_do_key_autorepeatoff(e.mlx);
+	mlx_key_hook(e.win, key_press, &e);
+	mlx_hook(e.win, KEY_PRESS, KEY_PRESS_MASK, key_press, &e);
 	mlx_loop_hook(e.mlx, loop_hook, &e);
-	mlx_key_hook(e.win, keyhook, &e);
 	mlx_loop(e.mlx);
 	return (0);
 }
