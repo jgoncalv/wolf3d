@@ -20,7 +20,7 @@ INC_PATH = ./include/ libft/include/
 GCC_FLGS = -Werror -Wextra -Wall -g
 MLX = -L mlx -lmlx -framework OpenGL -framework AppKit
 
-SRC_NAME = main.c parser.c error_message.c init.c raycasting.c keyhook.c draw_ray.c
+SRC_NAME = main.c parser.c error_message.c init.c raycasting.c keyhook.c draw_ray.c loophook.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

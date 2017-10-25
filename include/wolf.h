@@ -28,6 +28,9 @@
 # define MINI_MAPW 160
 # define MINI_MAPH 120
 
+# define KEY_PRESS_MASK (1L<<0)
+# define KEY_PRESS 2
+
 # define UP_ARROW 126
 # define DOWN_ARROW 125
 # define LEFT_ARROW 123
@@ -45,6 +48,10 @@ typedef struct	s_env
 	int			s_line;
 	int			ed;
 
+	int			player_move_up;
+	int			player_move_down;
+	int			player_move_right;
+	int			player_move_left;
 	double		player_posx;
 	double		player_posy;
 	double		player_dirx;
@@ -121,5 +128,7 @@ void	raycasting(t_env *e);
 int			keyhook(int keycode, t_env *e);
 void	fill_pixel(char **img, int x, int y, int color);
 void		draw_ray(t_env *e, double xf, double yf, int color);
+int 		loop_hook(t_env *e);
+int 		key_press(int k, t_env *e);
 
 #endif

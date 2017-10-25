@@ -223,5 +223,5 @@ void	raycasting(t_env *e)
 		draw_line(e,&ray,x);
 		//draw_ray(e, ray.sidedx, ray.sidedy, 0xff0000);
 	}
-	draw_player_dir(e);
+	//draw_player_dir(e);
 }

@@ -12,12 +12,8 @@
 
 #include "wolf.h"
 
-int			keyhook(int keycode, t_env *e)
+int			key_move(int keycode, t_env *e)
 {
-	double moveSpeed = 0.1;
-	double rotSpeed = 0.1;
-
-	printf("%d\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_image(e->mlx, e->img);
@@ -25,37 +21,29 @@ int			keyhook(int keycode, t_env *e)
 		exit(0);
 	}
 	if (keycode == UP_ARROW)
-	{
-		if(e->map[(int)(e->player_posy)][(int)(e->player_posx + e->player_dirx * moveSpeed)] == 0)
-			e->player_posx += e->player_dirx * moveSpeed;
-		if(e->map[(int)(e->player_posy + e->player_diry * moveSpeed)][(int)(e->player_posx)] == 0)
-			e->player_posy += e->player_diry * moveSpeed;
-	}
-	else if (keycode == DOWN_ARROW)
-	{
-		if(e->map[(int)(e->player_posy)][(int)(e->player_posx - e->player_dirx * moveSpeed)] == 0)
-			e->player_posx -= e->player_dirx * moveSpeed;
-		if(e->map[(int)(e->player_posy - e->player_diry * moveSpeed)][(int)(e->player_posx)] == 0)
-			e->player_posy -= e->player_diry * moveSpeed;
-	}
-	else if (keycode == RIGHT_ARROW)
-	{
-		double oldDirX = e->player_dirx;
-		e->player_dirx = e->player_dirx * cos(-rotSpeed) - e->player_diry * sin(-rotSpeed);
-		e->player_diry = oldDirX * sin(-rotSpeed) + e->player_diry * cos(-rotSpeed);
-		double oldPlaneX = e->planex;
-		e->planex = e->planex * cos(-rotSpeed) - e->planey * sin(-rotSpeed);
-		e->planey = oldPlaneX * sin(-rotSpeed) + e->planey * cos(-rotSpeed);
-	}
-	else if (keycode == LEFT_ARROW)
-	{
-		double oldDirX = e->player_dirx;
-		e->player_dirx = e->player_dirx * cos(rotSpeed) - e->player_diry * sin(rotSpeed);
-		e->player_diry = oldDirX * sin(rotSpeed) + e->player_diry * cos(rotSpeed);
-		double oldPlaneX = e->planex;
-		e->planex = e->planex * cos(rotSpeed) - e->planey * sin(rotSpeed);
-		e->planey = oldPlaneX * sin(rotSpeed) + e->planey * cos(rotSpeed);
-	}
-	printf("%f %f %f %f\n", e->planex, e->planey, e->player_dirx, e->player_diry);
+		e->player_move_up = !e->player_move_up;
+
+	if (keycode == DOWN_ARROW)
+		e->player_move_down = !e->player_move_down;
+	
+	if (keycode == RIGHT_ARROW)
+		e->player_move_right = !e->player_move_right;
+
+	if (keycode == LEFT_ARROW)
+		e->player_move_left = !e->player_move_left;
 	return (0);
+}
+
+
+int		keyhook(int k, t_env *e)
+{	
+	key_move(k, e);
+	return 0;
+}
+
+
+int		key_press(int k, t_env *e)
+{	
+	key_move(k, e);
+	return 0;
 }
