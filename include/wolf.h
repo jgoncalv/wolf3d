@@ -38,15 +38,6 @@
 # define RIGHT_ARROW 124
 
 
- typedef struct		s_img
-{
-	void			*im;
-	char			*imc;
-	int				imlen;
-	int				bpp;
-	int				endi;
-}					t_img;
-
 typedef struct	s_env
 {
 	void		*mlx;
@@ -80,8 +71,6 @@ typedef struct	s_env
 	int 		color_west;
 	int 		color_north;
 	int 		color_south;
-	int         g;
-	t_img 		sky;
 
 }				t_env;
 
