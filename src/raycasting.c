@@ -6,7 +6,7 @@
 /*   By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 18:36:50 by nbuhler           #+#    #+#             */
-/*   Updated: 2017/10/26 16:38:42 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 18:14:21 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ void    put_pxl(t_env *e, int x, int y, unsigned int c)
 
 int get_color(t_env *e, t_ray *ray)
 {
+	if (e->map[ray->mapy][ray->mapy] == 8)
+	{
+	//	printf("%d %d\n", e->map[ray->mapy][ray->mapy], 0xffffff);
+		return (0xffffff);
+	}
 	if (ray->side == 1)
 	{
 		if ((ray->stepx == -1 && ray->stepy == -1) || (ray->stepx == 1 && ray->stepy == -1))
@@ -118,11 +123,7 @@ int smog(double d, int color)
 	if (r > 0)
 		r = r - ((r * d) / SMOG_DIST);
 	if (g > 0)
-	{
-		//printf("avant %d ", g);
 		g = g - ((g * d) / SMOG_DIST);
-		//printf("apres %d\n", g);
-	}
 	if (b > 0)
 		b = b - ((b * d) / SMOG_DIST);
 	r = r <= 0 || r > 255 ? 0 : r;
@@ -141,7 +142,11 @@ void draw_line(t_env *e, t_ray *ray, int x)
 	i = -1;
 	init = (WIN_H - 1) / (SQUARE_MAP_SIZE - 1);
 	while(++i < ray->draw_start)
-		put_pxl(e, x, i, e->colorsky);
+	{
+		d = (double)i / init;
+		d = d < 0 ? d * -1 : d;
+		put_pxl(e, x, i, smog(d, e->colorsky));
+	}
 	i--;
 	while(++i <= ray->draw_end && i < WIN_H)
 		put_pxl(e, x, i, smog(ray->walldist, get_color(e, ray)));
@@ -185,7 +190,6 @@ void draw_map(t_env *e)
 		}
 	}
 
-	// draw player pos
 	int player_size = 2;
 	int decalx = WIN_W - MINI_MAPW;
 	int ymax = e->player_posy * (MINI_MAPH / SQUARE_MAP_SIZE) + player_size;

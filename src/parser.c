@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 17:18:48 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/24 16:46:13 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 17:17:31 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ int			parser(char **map)
 		return (0);
 	if (check_space_for_player(map) == 0)
 		return (0);
-	printf("%d %d\n", width, length);
 	return (1);
 }
