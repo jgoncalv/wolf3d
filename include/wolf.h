@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/25 20:23:19 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 16:39:37 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # define PROG_NAME "Wolf3D"
 # define SQUARE_MAP_SIZE 10
 # define MINI_MAPW 160
-# define MINI_MAPH 120
+# define MINI_MAPH 160
+# define SMOG_DIST 4
 
 # define KEY_PRESS_MASK (1L<<0)
 # define KEY_PRESS 2

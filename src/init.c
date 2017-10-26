@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 16:44:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/25 20:22:32 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 16:38:31 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ t_env init(char **map)
 	e.win = mlx_new_window(e.mlx, e.width, e.height, "Wolf3D");
 	e.img = mlx_new_image(e.mlx, e.width, e.height);
 	e.pxl = mlx_get_data_addr(e.img, &(e.bpp), &(e.s_line), &(e.ed));
-	e.colorsky = 0x5BB8FE;
-	e.colorground = 0x00FFFF;
-	e.color_east = 0xFF0000;
-	e.color_west = 0x00FF00;
-	e.color_north = 0x0000FF;
-	e.color_south = 0xFF00FF;
+	e.colorsky = 0x065a69;
+	e.colorground = 0x340707;
+	e.color_east = 0x8b2c2c;
+	e.color_west = 0xdb551b;
+	e.color_north = 0x362121;
+	e.color_south = 0x877979;
 	ft_init_player(&e, map);
 	ft_init_map(&e, map);
 	return (e);
