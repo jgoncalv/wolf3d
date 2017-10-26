@@ -37,7 +37,6 @@
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
 
-
 typedef struct	s_env
 {
 	void		*mlx;
@@ -67,75 +66,70 @@ typedef struct	s_env
 
 	int			colorsky;
 	int			colorground;
-	int 		color_east;
-	int 		color_west;
-	int 		color_north;
-	int 		color_south;
+	int			color_east;
+	int			color_west;
+	int			color_north;
+	int			color_south;
 
 }				t_env;
 
-
-
-
-
-typedef struct s_ray
+typedef struct	s_ray
 {
-	double	posx;
-	double	posy;
+	double		posx;
+	double		posy;
 
-	double	dirx;
-	double	diry;
+	double		dirx;
+	double		diry;
 
-	double	sidedx;
-	double	sidedy;
+	double		sidedx;
+	double		sidedy;
 
-	double	ddistx;
-	double	ddisty;
+	double		ddistx;
+	double		ddisty;
 
-	double	walldist;
+	double		walldist;
 
-	int		side;
+	int			side;
 
-	int		stepx;
-	int		stepy;
+	int			stepx;
+	int			stepy;
 
-	double	camerax;
+	double		camerax;
 
-	int		mapx;
-	int		mapy;
-	double 	draw_start;
-	double 	draw_end;
+	int			mapx;
+	int			mapy;
+	double		draw_start;
+	double		draw_end;
 
 }				t_ray;
 
-
-typedef struct		s_draw
+typedef struct	s_draw
 {
-	int				color;
-	int				zi;
-	int				zf;
-	int				xi;
-	int				yi;
-	int				xf;
-	int				yf;
-	int				dx;
-	int				dy;
-	int				xinc;
-	int				yinc;
-	int				decalx;
-	int				decaly;
-	int				offsetx;
-	int				offsety;
-}					t_draw;
+	int			color;
+	int			zi;
+	int			zf;
+	int			xi;
+	int			yi;
+	int			xf;
+	int			yf;
+	int			dx;
+	int			dy;
+	int			xinc;
+	int			yinc;
+	int			decalx;
+	int			decaly;
+	int			offsetx;
+	int			offsety;
+}				t_draw;
 
-int		parser(char **map);
-void	error_message();
-t_env	init(char **map);
-void	raycasting(t_env *e);
-int			keyhook(int keycode, t_env *e);
-void	fill_pixel(char **img, int x, int y, int color);
-void		draw_ray(t_env *e, double xf, double yf, int color);
-int 		loop_hook(t_env *e);
-int 		key_press(int k, t_env *e);
+int				parser(char **map);
+void			error_message();
+t_env			init(char **map);
+void			raycasting(t_env *e);
+int				keyhook(int keycode, t_env *e);
+void			fill_pixel(char **img, int x, int y, int color);
+void			draw_ray(t_env *e, double xf, double yf, int color);
+int				loop_hook(t_env *e);
+int				key_press(int k, t_env *e);
 
 #endif
