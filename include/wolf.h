@@ -27,6 +27,7 @@
 # define SQUARE_MAP_SIZE 10
 # define MINI_MAPW 160
 # define MINI_MAPH 120
+# define SKY "textures/foto.xpm"
 
 # define KEY_PRESS_MASK (1L<<0)
 # define KEY_PRESS 2
@@ -35,6 +36,16 @@
 # define DOWN_ARROW 125
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
+
+
+ typedef struct		s_img
+{
+	void			*im;
+	char			*imc;
+	int				imlen;
+	int				bpp;
+	int				endi;
+}					t_img;
 
 typedef struct	s_env
 {
@@ -69,7 +80,14 @@ typedef struct	s_env
 	int 		color_west;
 	int 		color_north;
 	int 		color_south;
+	int         g;
+	t_img 		sky;
+
 }				t_env;
+
+
+
+
 
 typedef struct s_ray
 {

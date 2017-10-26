@@ -68,8 +68,13 @@ static void ft_init_map(t_env *e, char **map)
 t_env init(char **map)
 {
 	t_env e;
+	int win_x;
+	int win_y;
 
 	ft_bzero(&e, sizeof(t_env));
+
+	win_x = WIN_W;
+	win_y = WIN_H / 2;
 	e.width = WIN_W;
 	e.height = WIN_H;
 	e.mlx = mlx_init();
@@ -82,6 +87,10 @@ t_env init(char **map)
 	e.color_west = 0x00FF00;
 	e.color_north = 0x0000FF;
 	e.color_south = 0xFF00FF;
+	e.g = 256;
+	e.sky.im = mlx_xpm_file_to_image(e.win, SKY, &win_x, &win_y);
+	e.sky.imc = mlx_get_data_addr(e.sky.im, &e.sky.bpp, &e.sky.imlen,
+			&e.sky.endi);
 	ft_init_player(&e, map);
 	ft_init_map(&e, map);
 	return (e);

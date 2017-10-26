@@ -125,19 +125,43 @@ int smog_wall(t_ray *ray, int color)
 	return (color);
 }
 
+int smog_floor(t_env *e)
+{
+	int	r;
+	int g;
+	int	b;
+	int color;
+
+	r = 0;
+	g = e->g;
+	b = 0;
+	//printf("%d\n", e->g);
+		if (r > 0)
+			r =  0;
+		if (e->g > 0)
+			e->g -=  1;
+		else
+			e->g = 0;
+		if (b > 0)
+			b = 0;
+		color = (e->g*256);
+	return (color);
+}
+
 void draw_line(t_env *e, t_ray *ray, int x)
 {
 	int i;
 
+
 	i = -1;
 	while(++i < ray->draw_start)
-		put_pxl(e, x, i, e->colorsky);
+		put_pxl(e, x, i, 0xC00000A0);
 	i--;
 	while(++i <= ray->draw_end && i < WIN_H)
 		put_pxl(e, x, i, smog_wall(ray, get_color(e, ray)));
 	i--;
 	while(++i < WIN_H)
-		put_pxl(e, x, i, e->colorground);
+		put_pxl(e, x, i, smog_floor(e));
 }
 
 
