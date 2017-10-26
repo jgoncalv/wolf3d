@@ -37,6 +37,7 @@
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
 
+
 typedef struct	s_env
 {
 	void		*mlx;
@@ -70,7 +71,12 @@ typedef struct	s_env
 	int 		color_west;
 	int 		color_north;
 	int 		color_south;
+
 }				t_env;
+
+
+
+
 
 typedef struct s_ray
 {

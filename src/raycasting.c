@@ -6,7 +6,7 @@
 /*   By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 18:36:50 by nbuhler           #+#    #+#             */
-/*   Updated: 2017/10/26 18:14:21 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 18:25:17 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,6 @@ void    put_pxl(t_env *e, int x, int y, unsigned int c)
 
 int get_color(t_env *e, t_ray *ray)
 {
-	if (e->map[ray->mapy][ray->mapy] == 8)
-	{
-	//	printf("%d %d\n", e->map[ray->mapy][ray->mapy], 0xffffff);
-		return (0xffffff);
-	}
 	if (ray->side == 1)
 	{
 		if ((ray->stepx == -1 && ray->stepy == -1) || (ray->stepx == 1 && ray->stepy == -1))
