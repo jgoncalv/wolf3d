@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 18:14:12 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 19:17:54 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define MINI_MAPW 160
 # define MINI_MAPH 160
 # define SMOG_DIST 4
+# define MV_SPEED 0.03
+# define ROT_SPEED 0.03
 
 # define KEY_PRESS_MASK (1L<<0)
 # define KEY_PRESS 2
@@ -131,5 +133,9 @@ void			fill_pixel(char **img, int x, int y, int color);
 void			draw_ray(t_env *e, double xf, double yf, int color);
 int				loop_hook(t_env *e);
 int				key_press(int k, t_env *e);
+void			draw_map(t_env *e);
+void			draw_line(t_env *e, t_ray *ray, int x);
+void			draw_player_dir(t_env *e);
+void			put_pxl(t_env *e, int x, int y, unsigned int c);
 
 #endif

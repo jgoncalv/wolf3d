@@ -6,34 +6,31 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 16:44:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 18:25:24 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 19:23:50 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-static void ft_init_player(t_env *e, char **map)
+static void	ft_init_player(t_env *e, char **map)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	y = 0;
-	while (map[y])
+	y = -1;
+	while (map[++y])
 	{
-		x = 0;
-		while (map[y][x])
+		x = -1;
+		while (map[y][++x])
 		{
 			if (map[y][x] == '0')
 				break ;
-			x++;
 		}
 		if (map[y][x] && map[y][x] == '0')
 			break ;
-		y++;
 	}
 	e->player_posx = x + 0.5;
 	e->player_posy = y + 0.5;
-
 	e->player_dirx = 0;
 	e->player_diry = 1;
 	e->planex = 0.66;
@@ -44,7 +41,7 @@ static void ft_init_player(t_env *e, char **map)
 	e->player_move_left = 0;
 }
 
-static void ft_init_map(t_env *e, char **map)
+static void	ft_init_map(t_env *e, char **map)
 {
 	int i;
 	int j;
@@ -64,15 +61,13 @@ static void ft_init_map(t_env *e, char **map)
 	}
 }
 
-
-t_env init(char **map)
+t_env		init(char **map)
 {
-	t_env e;
-	int win_x;
-	int win_y;
+	t_env	e;
+	int		win_x;
+	int		win_y;
 
 	ft_bzero(&e, sizeof(t_env));
-
 	win_x = WIN_W;
 	win_y = WIN_H / 2;
 	e.width = WIN_W;
