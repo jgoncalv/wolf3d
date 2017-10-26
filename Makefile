@@ -6,7 +6,7 @@
 #    By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 11:54:09 by nbuhler           #+#    #+#              #
-#    Updated: 2017/10/25 13:30:27 by jgoncalv         ###   ########.fr        #
+#    Updated: 2017/10/26 19:17:39 by jgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INC_PATH = ./include/ libft/include/
 GCC_FLGS = -Werror -Wextra -Wall -g
 MLX = -L mlx -lmlx -framework OpenGL -framework AppKit
 
-SRC_NAME = main.c parser.c error_message.c init.c raycasting.c keyhook.c draw_ray.c loophook.c
+SRC_NAME = main.c parser.c error_message.c init.c raycasting.c keyhook.c\
+ draw_ray.c loophook.c draw.c put_pxl.c draw_minimap.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

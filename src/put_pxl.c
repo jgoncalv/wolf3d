@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_pxl.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/26 19:01:34 by jgoncalv          #+#    #+#             */
+/*   Updated: 2017/10/26 19:02:32 by jgoncalv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "wolf.h"
 
 void	fill_pixel(char **img, int x, int y, int color)
 {
@@ -7,14 +20,12 @@ void	fill_pixel(char **img, int x, int y, int color)
 	}
 }
 
-
-void    put_pxl(t_env *e, int x, int y, unsigned int c)
+void	put_pxl(t_env *e, int x, int y, unsigned int c)
 {
-	int    i;
+	int	i;
 
 	if (x >= (WIN_W - MINI_MAPW) && y <= (MINI_MAPH))
 		return ;
-
 	i = (x * 4) + (y * e->s_line);
 	e->pxl[i] = c;
 	e->pxl[++i] = c >> 8;

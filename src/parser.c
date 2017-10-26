@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 17:18:48 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 17:17:31 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 19:02:51 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static int	check_space_for_player(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-
 			if (map[i][j] < '0' || map[i][j] > '9')
 				return (0);
 			if (map[i][j] == '0')

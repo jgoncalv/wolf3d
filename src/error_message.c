@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 14:47:27 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/17 14:55:16 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 19:24:33 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <sysexits.h>
 #include <stdlib.h>
 
-void	error_message()
+void	error_message(void)
 {
 	perror(strerror(errno));
 	exit(EXIT_FAILURE);

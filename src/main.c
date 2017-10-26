@@ -6,13 +6,13 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:16 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 18:13:54 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 19:03:51 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-static char **open_map(const char *file)
+static char	**open_map(const char *file)
 {
 	char	**map;
 	char	*line;
@@ -22,7 +22,7 @@ static char **open_map(const char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
-	i++;
+		i++;
 	close(fd);
 	map = ft_tabnew(i);
 	fd = open(file, O_RDONLY);
@@ -36,10 +36,10 @@ static char **open_map(const char *file)
 	return (map);
 }
 
-int	main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	char **map;
-	t_env e;
+	char	**map;
+	t_env	e;
 
 	if (ac != 2)
 		return (0);
