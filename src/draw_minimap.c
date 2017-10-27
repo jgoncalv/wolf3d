@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbuhler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 19:21:12 by nbuhler           #+#    #+#             */
-/*   Updated: 2017/10/26 19:21:16 by nbuhler          ###   ########.fr       */
+/*   Updated: 2017/10/27 14:10:40 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void	draw_player_dir(t_env *e)
+void		draw_player_dir(t_env *e)
 {
 	double rayx;
 	double rayy;
 
-	rayx = e->player_posx + (e->player_dirx * 1.5);
-	rayy = e->player_posy + (e->player_diry * 1.5);
+	rayx = e->player_posx + e->player_dirx;
+	rayy = e->player_posy + e->player_diry;
 	draw_ray(e, rayx, rayy, 0x00ff00);
 }
 
-void	draw_map2(t_env *e, int x, int y)
+static void	draw_map2(t_env *e, int x, int y)
 {
 	int player_size;
 	int decalx;
@@ -48,7 +48,7 @@ void	draw_map2(t_env *e, int x, int y)
 	}
 }
 
-void	draw_map(t_env *e)
+void		draw_map(t_env *e)
 {
 	int i;
 	int j;

@@ -6,13 +6,13 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 13:22:13 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/25 16:27:23 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 14:07:09 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-static void	ft_draw_line_x(t_env *e, t_draw draw)
+static void	draw_ray_x(t_env *e, t_draw draw)
 {
 	int cumul;
 	int	i;
@@ -36,7 +36,7 @@ static void	ft_draw_line_x(t_env *e, t_draw draw)
 	}
 }
 
-static void	ft_draw_line_y(t_env *e, t_draw draw)
+static void	draw_ray_y(t_env *e, t_draw draw)
 {
 	int cumul;
 	int	i;
@@ -79,7 +79,7 @@ void		draw_ray(t_env *e, double xf, double yf, int color)
 	draw.color = color;
 	fill_pixel(&e->pxl, draw.xi, draw.yi, draw.color);
 	if (draw.dx > draw.dy)
-		ft_draw_line_x(e, draw);
+		draw_ray_x(e, draw);
 	else
-		ft_draw_line_y(e, draw);
+		draw_ray_y(e, draw);
 }

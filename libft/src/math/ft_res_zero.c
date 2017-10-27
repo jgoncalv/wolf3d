@@ -6,11 +6,11 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 16:48:43 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/21 14:40:39 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 14:00:26 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_res_zero(int	res)
+int	ft_res_zero(int res)
 {
 	return ((res == 0 ? 1 : res));
 }

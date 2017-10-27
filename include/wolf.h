@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 19:17:54 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 15:07:55 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIN_W 800
 # define WIN_H 600
 # define PROG_NAME "Wolf3D"
-# define SQUARE_MAP_SIZE 10
+# define SQUARE_MAP_SIZE 20
 # define MINI_MAPW 160
 # define MINI_MAPH 160
 # define SMOG_DIST 4

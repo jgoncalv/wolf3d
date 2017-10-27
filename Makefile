@@ -6,7 +6,7 @@
 #    By: nbuhler <nbuhler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 11:54:09 by nbuhler           #+#    #+#              #
-#    Updated: 2017/10/26 19:17:39 by jgoncalv         ###   ########.fr        #
+#    Updated: 2017/10/27 14:39:54 by jgoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
-INC_PATH = ./include/ libft/include/
+INC_PATH = ./include/ ./libft/include/
 
 GCC_FLGS = -Werror -Wextra -Wall -g
 MLX = -L mlx -lmlx -framework OpenGL -framework AppKit
@@ -39,7 +39,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	mkdir -p $(OBJ_PATH)
-	$(CC) $(GCC_FLGS) $(INC) -o $@ -c $<
+	$(CC) $(GCC_FLGS) -MMD -c $(INC) -o $@ -c $<
 
 clean:
 	rm -fv $(OBJ)
@@ -50,3 +50,7 @@ fclean: clean
 	rm -fv $(NAME)
 
 re: fclean all
+
+.PHONY:			fclean clean re relib cleanlib fcleanlib
+
+-include $(OBJ:.o=.d)

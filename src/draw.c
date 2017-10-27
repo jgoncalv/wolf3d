@@ -6,13 +6,13 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 15:46:12 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/25 15:46:19 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 15:12:03 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-int		get_color(t_env *e, t_ray *ray)
+static int	get_color(t_env *e, t_ray *ray)
 {
 	if (ray->side == 1)
 	{
@@ -29,7 +29,7 @@ int		get_color(t_env *e, t_ray *ray)
 	return (e->color_south);
 }
 
-int		smog(double d, int color)
+static int	smog(double d, int color)
 {
 	int	r;
 	int	g;
@@ -51,7 +51,7 @@ int		smog(double d, int color)
 	return (color);
 }
 
-void	draw_line(t_env *e, t_ray *ray, int x)
+void		draw_line(t_env *e, t_ray *ray, int x)
 {
 	int		i;
 	double	init;

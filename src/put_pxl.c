@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 19:01:34 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 19:02:32 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 14:09:14 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	put_pxl(t_env *e, int x, int y, unsigned int c)
 {
 	int	i;
 
-	if (x >= (WIN_W - MINI_MAPW) && y <= (MINI_MAPH))
+	if (x >= (WIN_W - MINI_MAPW) && y < MINI_MAPH)
 		return ;
 	i = (x * 4) + (y * e->s_line);
 	e->pxl[i] = c;
