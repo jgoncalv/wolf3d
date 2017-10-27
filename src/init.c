@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 16:44:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 19:23:50 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 15:32:53 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,8 @@ static void	ft_init_map(t_env *e, char **map)
 t_env		init(char **map)
 {
 	t_env	e;
-	int		win_x;
-	int		win_y;
 
 	ft_bzero(&e, sizeof(t_env));
-	win_x = WIN_W;
-	win_y = WIN_H / 2;
 	e.width = WIN_W;
 	e.height = WIN_H;
 	e.mlx = mlx_init();

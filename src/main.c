@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:16 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/27 15:12:17 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 15:29:59 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int			main(int ac, char **av)
 	mlx_do_key_autorepeatoff(e.mlx);
 	mlx_key_hook(e.win, key_press, &e);
 	mlx_hook(e.win, KEY_PRESS, KEY_PRESS_MASK, key_press, &e);
+	mlx_hook(e.win, 17, 18, ft_quit, &e);
 	mlx_loop_hook(e.mlx, loop_hook, &e);
 	mlx_loop(e.mlx);
 	return (0);

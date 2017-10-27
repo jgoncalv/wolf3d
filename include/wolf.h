@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:52 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/27 15:07:55 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/27 15:30:27 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 # define SQUARE_MAP_SIZE 20
 # define MINI_MAPW 160
 # define MINI_MAPH 160
-# define SMOG_DIST 4
-# define MV_SPEED 0.03
-# define ROT_SPEED 0.03
+# define SMOG_DIST 6
+# define MV_SPEED 0.06
+# define ROT_SPEED 0.06
 
 # define KEY_PRESS_MASK (1L<<0)
 # define KEY_PRESS 2
@@ -137,5 +137,6 @@ void			draw_map(t_env *e);
 void			draw_line(t_env *e, t_ray *ray, int x);
 void			draw_player_dir(t_env *e);
 void			put_pxl(t_env *e, int x, int y, unsigned int c);
+int				ft_quit(t_env *e);
 
 #endif
