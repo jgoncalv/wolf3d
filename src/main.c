@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 16:44:16 by jgoncalv          #+#    #+#             */
-/*   Updated: 2017/10/26 19:03:51 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/10/26 19:55:48 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static char	**open_map(const char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
+	{
+		free(line);
 		i++;
+	}
 	close(fd);
 	map = ft_tabnew(i);
 	fd = open(file, O_RDONLY);
@@ -30,6 +33,7 @@ static char	**open_map(const char *file)
 	while (get_next_line(fd, &line) > 0)
 	{
 		map[i] = ft_strdup(line);
+		free(line);
 		i++;
 	}
 	close(fd);
