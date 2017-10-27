@@ -31,7 +31,6 @@ static void	ft_draw_line_x(t_env *e, t_draw draw)
 			cumul -= draw.dx;
 			y += draw.yinc;
 		}
-		//draw.color = get_color(draw, mlx, x);
 		fill_pixel(&e->pxl, x, y, draw.color);
 		i++;
 	}
@@ -56,7 +55,6 @@ static void	ft_draw_line_y(t_env *e, t_draw draw)
 			cumul -= draw.dy;
 			x += draw.xinc;
 		}
-		//draw.color = get_color(draw, mlx, x);
 		fill_pixel(&e->pxl, x, y, draw.color);
 		i++;
 	}
@@ -64,9 +62,10 @@ static void	ft_draw_line_y(t_env *e, t_draw draw)
 
 void		draw_ray(t_env *e, double xf, double yf, int color)
 {
-	t_draw draw;
+	t_draw	draw;
+	int		decalx;
 
-	int decalx = WIN_W - MINI_MAPW;
+	decalx = WIN_W - MINI_MAPW;
 	draw.xf = xf * (double)(MINI_MAPW / SQUARE_MAP_SIZE) + decalx;
 	draw.yf = yf * (double)(MINI_MAPH / SQUARE_MAP_SIZE);
 	draw.xi = e->player_posx * (double)(MINI_MAPW / SQUARE_MAP_SIZE) + decalx;
@@ -75,7 +74,6 @@ void		draw_ray(t_env *e, double xf, double yf, int color)
 	draw.dy = draw.yf - draw.yi;
 	draw.xinc = draw.dx > 0 ? 1 : -1;
 	draw.yinc = draw.dy > 0 ? 1 : -1;
-	//printf("ICI %f %f\n", draw.dx, draw.dy);
 	draw.dx = abs(draw.dx);
 	draw.dy = abs(draw.dy);
 	draw.color = color;

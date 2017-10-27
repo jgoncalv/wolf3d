@@ -21,7 +21,7 @@ GCC_FLGS = -Werror -Wextra -Wall -g
 MLX = -L mlx -lmlx -framework OpenGL -framework AppKit
 
 SRC_NAME = main.c parser.c error_message.c init.c raycasting.c keyhook.c\
- draw_ray.c loophook.c draw.c put_pxl.c
+ draw_ray.c loophook.c draw.c put_pxl.c draw_minimap.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = libft

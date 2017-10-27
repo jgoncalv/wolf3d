@@ -31,12 +31,6 @@ int		key_move(int keycode, t_env *e)
 	return (0);
 }
 
-int		keyhook(int k, t_env *e)
-{
-	key_move(k, e);
-	return (0);
-}
-
 int		key_press(int k, t_env *e)
 {
 	key_move(k, e);
